@@ -1,6 +1,13 @@
+		var sentenceEng= [['John', 'ate', 'an','apple', 'before', 'afternoon'],['some', 'students', 'like','to', 'study', 'at', 'night'],['John', 'and', 'Mary','went', 'to', 'church'],['John', 'went', 'to', 'church', 'after', 'eating'],['did', 'he', 'go', 'to', 'market'],['the', 'woman', 'who', 'called', 'my', 'sister', 'sells', 'cosmetics'],['John', 'goes', 'to', 'the', 'library', 'and', 'studies'],['John', 'ate', 'an', 'apple', 'so', 'did', 'she'],['the', 'teacher', 'returned', 'the', 'book', 'after', 'she', 'noticed', 'the', 'error'],['I', 'told', 'her', 'that', 'I', 'bought', 'a', 'book', 'yesterday']];
+		var sentenceHin= [['राम', 'और', 'श्याम', 'बाजार', 'गयें'], ['राम', 'सोया', 'और', 'श्याम', 'भी'], ['मैंने', 'उसे', 'बताया', 'कि', 'राम', 'सो', 'रहा', 'है'], ['राम', 'खाकर', 'सोया'], ['बिल्लियों', 'को', 'मारकर', 'कुत्ता', 'सो', 'गया'], ['एक', 'लाल', 'किताब', 'वहाँ', 'है'], ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']];
 
 	function chooseOptn(){
 			document.getElementById("randomSentence").innerHTML="";
+			document.getElementById("displayText2").innerHTML="";
+			document.getElementById("reformBtn").innerHTML="";
+			document.getElementById("formedSentence").innerHTML="";
+
+
 			var x= document.getElementById("selected").value;
 			var message="";
 			if(x=='english'){
@@ -15,20 +22,34 @@
 	}
 
 	function randomEngSentence(){
-		var sentence= [['John', 'ate', 'an','apple', 'before', 'afternoon'],['some', 'students', 'like','to', 'study', 'at', 'night'],['John', 'and', 'Mary','went', 'to', 'church'],['John', 'went', 'to', 'church', 'after', 'eating'],['did', 'he', 'go', 'to', 'market'],['the', 'woman', 'who', 'called', 'my', 'sister', 'sells', 'cosmetics'],['John', 'goes', 'to', 'the', 'library', 'and', 'studies'],['John', 'ate', 'an', 'apple', 'so', 'did', 'she'],['the', 'teacher', 'returned', 'the', 'book', 'after', 'she', 'noticed', 'the', 'error'],['I', 'told', 'her', 'that', 'I', 'bought', 'a', 'book', 'yesterday']];
-		var index= sentence[Math.floor(Math.random() * sentence.length)];
+		var index= sentenceEng[Math.floor(Math.random() * sentenceEng.length)];
 		var shuffle= shuffleWords(index);
 		for (var i = 0; i < shuffle.length; i++) {
-		document.getElementById("randomSentence").innerHTML += "<button class='wordBtn'>" + shuffle[i] + "</button>";
+		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
 }
 
-	function randomHinSentence(){
-		var sentence= [['राम', 'और', 'श्याम', 'बाजार', 'गयें'], ['राम', 'सोया', 'और', 'श्याम', 'भी'], ['मैंने', 'उसे', 'बताया', 'कि', 'राम', 'सो', 'रहा', 'है'], ['राम', 'खाकर', 'सोया'], ['बिल्लियों', 'को', 'मारकर', 'कुत्ता', 'सो', 'गया'], ['एक', 'लाल', 'किताब', 'वहाँ', 'है'], ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']];
-		var index= sentence[Math.floor(Math.random() * sentence.length)];
-		var shuffle= shuffleWords(index);
+function myFunction(y) {
+	document.getElementById("displayText2").innerHTML="Formed Sentence (after selecting words):";	
+  	var x = document.getElementById(y);
+    x.style.display = "none";
+    document.getElementById("formedSentence").innerHTML= document.getElementById(y).textContent;
+    document.getElementById("reformBtn").innerHTML= "<button>"+"Re-form the sentence"+"</button>"
+  }
+
+/*	function removeBtn(z,shuffle){
+		alert("chacha")
+		shuffle.remove(z);
 		for (var i = 0; i < shuffle.length; i++) {
 		document.getElementById("randomSentence").innerHTML += "<button class='wordBtn'>" + shuffle[i] + "</button>";
+	}
+	}
+*/
+	function randomHinSentence(){
+		var index= sentenceHin[Math.floor(Math.random() * sentenceHin.length)];
+		var shuffle= shuffleWords(index);
+		for (var i = 0; i < shuffle.length; i++) {
+		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
 }
 
