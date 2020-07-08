@@ -13,3 +13,8 @@ option{
 select{
 	margin-left: 300px;
 }
+
+.wordBtn{
+	margin-right: 5px;
+	margin-left: 5px;
+}

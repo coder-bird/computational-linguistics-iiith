@@ -1,22 +1,55 @@
 
 	function chooseOptn(){
+			document.getElementById("randomSentence").innerHTML="";
 			var x= document.getElementById("selected").value;
 			var message="";
 			if(x=='english'){
 			message="Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+			randomEngSentence();
 		} 
 			if(x=='hindi'){
 			message="Form a sentence (Declarative or Interrogative or any other type) from the given words <br>(select the buttons in proper order)";
+			randomHinSentence();
 		}
 		document.getElementById("displayText").innerHTML=message;
 	}
 
+	function randomEngSentence(){
+		var sentence= [['John', 'ate', 'an','apple', 'before', 'afternoon'],['some', 'students', 'like','to', 'study', 'at', 'night'],['John', 'and', 'Mary','went', 'to', 'church'],['John', 'went', 'to', 'church', 'after', 'eating'],['did', 'he', 'go', 'to', 'market'],['the', 'woman', 'who', 'called', 'my', 'sister', 'sells', 'cosmetics'],['John', 'goes', 'to', 'the', 'library', 'and', 'studies'],['John', 'ate', 'an', 'apple', 'so', 'did', 'she'],['the', 'teacher', 'returned', 'the', 'book', 'after', 'she', 'noticed', 'the', 'error'],['I', 'told', 'her', 'that', 'I', 'bought', 'a', 'book', 'yesterday']];
+		var index= sentence[Math.floor(Math.random() * sentence.length)];
+		var shuffle= shuffleWords(index);
+		for (var i = 0; i < shuffle.length; i++) {
+		document.getElementById("randomSentence").innerHTML += "<button class='wordBtn'>" + shuffle[i] + "</button>";
+	}
+}
+
+	function randomHinSentence(){
+		var sentence= [['राम', 'और', 'श्याम', 'बाजार', 'गयें'], ['राम', 'सोया', 'और', 'श्याम', 'भी'], ['मैंने', 'उसे', 'बताया', 'कि', 'राम', 'सो', 'रहा', 'है'], ['राम', 'खाकर', 'सोया'], ['बिल्लियों', 'को', 'मारकर', 'कुत्ता', 'सो', 'गया'], ['एक', 'लाल', 'किताब', 'वहाँ', 'है'], ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']];
+		var index= sentence[Math.floor(Math.random() * sentence.length)];
+		var shuffle= shuffleWords(index);
+		for (var i = 0; i < shuffle.length; i++) {
+		document.getElementById("randomSentence").innerHTML += "<button class='wordBtn'>" + shuffle[i] + "</button>";
+	}
+}
+
+	function shuffleWords(arra1) {
+    	var ctr = arra1.length, temp, index;
+    	while (ctr > 0) {
+        	index = Math.floor(Math.random() * ctr);
+        	ctr--;
+        	temp = arra1[ctr];
+        	arra1[ctr] = arra1[index];
+        	arra1[index] = temp;
+    }
+    return arra1;
+}
+
 
 
 /*function sentences(){
-var sentence1= ['John', 'ate', 'an','apple', 'before', 'afternoon'];
+var sentence1= [['John', 'ate', 'an','apple', 'before', 'afternoon'],['some', 'students', 'like','to', 'study', 'at', 'night'],['John', 'and', 'Mary','went', 'to', 'church'],['John', 'went', 'to', 'church', 'after', 'eating'],['did', 'he', 'go', 'to', 'market'],['the', 'woman', 'who', 'called', 'my', 'sister', 'sells', 'cosmetics'],['John', 'goes', 'to', 'the', 'library', 'and', 'studies'],['John', 'ate', 'an', 'apple', 'so', 'did', 'she'],['the', 'teacher', 'returned', 'the', 'book', 'after', 'she', 'noticed', 'the', 'error'],['I', 'told', 'her', 'that', 'I', 'bought', 'a', 'book', 'yesterday']];
 		var x=document.getElementById("1");
-		x,in= sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3]+" "+sentence1[4]+" "+sentence1[5];
+		x.innerHTML= sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3]+" "+sentence1[4]+" "+sentence1[5];
 		var x=document.getElementById("2");
 		x.innerHTML= sentence1[4]+" "+sentence1[5]+" "+sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3];
 		var x=document.getElementById("3");
