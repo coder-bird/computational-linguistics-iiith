@@ -1,125 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-	
-</head>
-<body>
-	<h2>Display sentences</h2>
-	<h3>Words: John, ate, an, apple, before, afternoon</h3>
-	<p id="1"></p>
-	<p id="2"></p>
-	<p id="3"></p>
-
-	<h3>Words: some, students, like, to, study, in, the, night</h3>
-	<p id="4"></p>
-	<p id="5"></p>
-
-	<h3>Words: John, Mary, church, to, went, and</h3>
-	<p id="6"></p>
-	<p id="7"></p>
-
-	<h3>Words: John, went, to, church, after, eating</h3>
-	<p id="8"></p>
-	<p id="9"></p>
-	<p id="10"></p>
-
-	<h3>Words: did, he, go, to, market</h3>
-	<p id="11"></p>
-	<p id="12"></p>
-
-	<h3>Words: the, woman, who, called, my, sister, sells, cosmetics</h3>
-	<p id="13"></p>
-	<p id="14"></p>
-	<p id="15"></p>
-	<p id="16"></p>
-
-	<h3>Words: John, goes, to, the, library, and, studies</h3>
-	<p id="17"></p>
-	<p id="18"></p>
-
-	<h3>Words: John, ate, an, apple, so, did, she</h3>
-	<p id="19"></p>
-	<p id="20"></p>
-
-	<h3>Words: the, teacher, returned, the, book, after, she, noticed, the, error</h3>
-	<p id="21"></p>
-	<p id="22"></p>
-	<p id="23"></p>
-	<p id="24"></p>
-	<p id="25"></p>
-	<p id="26"></p>
-	<p id="27"></p>
-	<p id="28"></p>
-
-	<h3>Words: I, told, her, that, I, bought, a, book, yesterday</h3>
-	<p id="29"></p>
-	<p id="30"></p>
-	<p id="31"></p>
-	<p id="32"></p>
-	<p id="33"></p>
-	<p id="34"></p>
-
-	<h2>Hindi Sentences</h2>
-
-	<h3>Words: राम, और, श्याम, बाजार, गयें</h3>
-	<p id="35"></p>
-	<p id="36"></p>
-	<p id="37"></p>
-	<p id="38"></p>
-
-	<h3>Words: राम, सोया, और, श्याम, भी</h3>
-	<p id="39"></p>
-	<p id="40"></p>
-	<p id="41"></p>
-	<p id="42"></p>
-
-	<h3>Words: मैंने, उसे, बताया, कि, राम, सो, रहा, है</h3>
-	<p id="43"></p>
-	<p id="44"></p>
-	<p id="45"></p>
-	<p id="46"></p>
-	<p id="47"></p>
-	<p id="48"></p>
-	<p id="49"></p>
-	<p id="50"></p>
-	<p id="51"></p>
-	<p id="52"></p>
-	<p id="53"></p>
-	<p id="54"></p>
-
-	<h3>Words: राम, खाकर, सोया</h3>
-	<p id="55"></p>
-	<p id="56"></p>
-	<p id="57"></p>
-	<p id="58"></p>
-	<p id="59"></p>
-	<p id="60"></p>
-
-	<h3>Words: बिल्लियों, को, मारकर, कुत्ता, सो, गया</h3>
-	<p id="61"></p>
-	<p id="62"></p>
-	<p id="63"></p>
-	<p id="64"></p>
-	<p id="65"></p>
-	<p id="66"></p>
-	<p id="67"></p>
-	<p id="68"></p>
-
-	<h3>Words: एक, लाल, किताब, वहाँ, है</h3>
-	<p id="69"></p>
-	<p id="70"></p>
-	<p id="71"></p>
-	<p id="72"></p>
-
-	<h3>Words: एक, बड़ी, सी, किताब, वहाँ, है</h3>
-	<p id="73"></p>
-	<p id="74"></p>
-	<p id="75"></p>
-	<p id="76"></p>
-	<p id="77"></p>
-	<p id="78"></p>
-	<p id="79"></p>
-	<p id="80"></p>
+	<link rel="stylesheet" type="text/css" href="CSS.css">
 	<script type="text/javascript" src="JS.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div class="container">
+	<h2>Experiment</h2>
+	<div class="selectDiv">
+		<select id="selected" onchange="chooseOptn()">
+			<option value="null">---Select Language---</option>
+			<option  value="english">English</option>
+			<option  value="hindi">Hindi</option>
+		</select>
+		<p id="displayText"></p>
+	</div>
+	
 </body>
 </html>

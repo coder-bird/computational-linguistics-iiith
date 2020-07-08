@@ -1,6 +1,22 @@
+
+	function chooseOptn(){
+			var x= document.getElementById("selected").value;
+			var message="";
+			if(x=='english'){
+			message="Form a sentence (Declarative or Interrogative or any other type) from the given words<br>(select the buttons in proper order)";
+		} 
+			if(x=='hindi'){
+			message="Form a sentence (Declarative or Interrogative or any other type) from the given words <br>(select the buttons in proper order)";
+		}
+		document.getElementById("displayText").innerHTML=message;
+	}
+
+
+
+/*function sentences(){
 var sentence1= ['John', 'ate', 'an','apple', 'before', 'afternoon'];
 		var x=document.getElementById("1");
-		x,innerHTML= sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3]+" "+sentence1[4]+" "+sentence1[5];
+		x,in= sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3]+" "+sentence1[4]+" "+sentence1[5];
 		var x=document.getElementById("2");
 		x.innerHTML= sentence1[4]+" "+sentence1[5]+" "+sentence1[0]+" "+sentence1[1]+" "+sentence1[2]+" "+sentence1[3];
 		var x=document.getElementById("3");
@@ -184,4 +200,6 @@ var sentence1= ['John', 'ate', 'an','apple', 'before', 'afternoon'];
 		var x=document.getElementById("79");
 		x.innerHTML= sentence17[5]+" "+sentence17[4]+" "+sentence17[0]+" "+sentence17[1]+" "+sentence17[2]+" "+sentence17[3];
 		var x=document.getElementById("80");
-		x.innerHTML= sentence17[5]+" "+sentence17[4]+" "+sentence17[1]+" "+sentence17[2]+" "+sentence17[0]+" "+sentence17[3];
+		x.innerHTML= sentence17[5]+" "+sentence17[4]+" "+sentence17[1]+" "+sentence17[2]+" "+sentence17[0]+" "+sentence17[3]; 
+	} */
+

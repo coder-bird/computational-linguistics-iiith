@@ -1,0 +1,15 @@
+.selectDiv {
+  position: fixed;
+  top: 40%;
+  left: 30%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+option{
+	text-align: center;
+}
+
+select{
+	margin-left: 300px;
+}
