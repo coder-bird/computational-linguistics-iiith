@@ -7,19 +7,25 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 <div class="container">
-	<h2>Experiment</h2>
-	<div class="selectDiv" >
+	<h2>Experiment</h2><hr><br><br>
+		<select id="selected1" onchange="choose()">
+			<option value="null">---Select corpus---</option>
+			<option value="Corpus1">Corpus 1</option>
+			<option value="Corpus2">Corpus 2</option>
+			<option value="Corpus3">Corpus 3</option>
+		</select><br><br>
+		<p id="displayCorpus"></p><br><br>
 		<select id="selected" onchange="chooseOptn()">
 			<option value="null">---Select Language---</option>
 			<option  value="english">English</option>
 			<option  value="hindi">Hindi</option>
 		</select>
 		<p id="displayText"></p>
-
 		<p id="randomSentence"></p>
 		<p id="displayText2"></p>
 		<p id="formedSentence"></p>
 		<p id="reformBtn"></p>
+		<p id="correctnessBtn"></p>
 	</div>
 </body>
 </html>

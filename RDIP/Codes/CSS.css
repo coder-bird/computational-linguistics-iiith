@@ -1,20 +1,74 @@
-.selectDiv {
-  position: fixed;
-  top: 40%;
-  left: 30%;
-  margin-top: -50px;
-  margin-left: -100px;
-}
-
+.
 option{
 	text-align: center;
 }
 
-select{
-	margin-left: 300px;
-}
 
 .wordBtn{
 	margin-right: 5px;
 	margin-left: 5px;
 }
+
+.container{
+	text-align: center;
+	align-content: center;
+	margin-right: 100px;
+	margin-left: 100px;
+}
+
+#selected, #selected1{
+	width:400px;
+	text-align: center;
+	padding:5px;
+	font-size: 20px;
+}
+
+#displayText, #displayText2{
+	color:black;
+}
+
+.wordBtn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#formedSentence{
+	color: black;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+
+.correctBtn,#reform {
+  background-color: #B22222;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+} 
