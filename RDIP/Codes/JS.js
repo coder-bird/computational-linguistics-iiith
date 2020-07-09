@@ -1,6 +1,6 @@
 		var sentenceEng= [['John', 'ate', 'an','apple', 'before', 'afternoon'],['some', 'students', 'like','to', 'study', 'at', 'night'],['John', 'and', 'Mary','went', 'to', 'church'],['John', 'went', 'to', 'church', 'after', 'eating'],['did', 'he', 'go', 'to', 'market'],['the', 'woman', 'who', 'called', 'my', 'sister', 'sells', 'cosmetics'],['John', 'goes', 'to', 'the', 'library', 'and', 'studies'],['John', 'ate', 'an', 'apple', 'so', 'did', 'she'],['the', 'teacher', 'returned', 'the', 'book', 'after', 'she', 'noticed', 'the', 'error'],['I', 'told', 'her', 'that', 'I', 'bought', 'a', 'book', 'yesterday']];
 		var sentenceHin= [['राम', 'और', 'श्याम', 'बाजार', 'गयें'], ['राम', 'सोया', 'और', 'श्याम', 'भी'], ['मैंने', 'उसे', 'बताया', 'कि', 'राम', 'सो', 'रहा', 'है'], ['राम', 'खाकर', 'सोया'], ['बिल्लियों', 'को', 'मारकर', 'कुत्ता', 'सो', 'गया'], ['एक', 'लाल', 'किताब', 'वहाँ', 'है'], ['एक', 'बड़ी', 'सी', 'किताब', 'वहाँ', 'है']];
-
+		var shuffle="";
 	function chooseOptn(){
 			document.getElementById("randomSentence").innerHTML="";
 			document.getElementById("displayText2").innerHTML="";
@@ -23,7 +23,7 @@
 
 	function randomEngSentence(){
 		var index= sentenceEng[Math.floor(Math.random() * sentenceEng.length)];
-		var shuffle= shuffleWords(index);
+		shuffle= shuffleWords(index);
 		for (var i = 0; i < shuffle.length; i++) {
 		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
@@ -34,35 +34,38 @@ function myFunction(y) {
   	var x = document.getElementById(y);
     x.style.display = "none";
     document.getElementById("formedSentence").innerHTML= document.getElementById(y).textContent;
-    document.getElementById("reformBtn").innerHTML= "<button>"+"Re-form the sentence"+"</button>"
+    document.getElementById("reformBtn").innerHTML= "<button id='reform' onclick='resetBtn()'>"+"Re-form the sentence"+"</button>"
+
   }
 
-/*	function removeBtn(z,shuffle){
-		alert("chacha")
-		shuffle.remove(z);
-		for (var i = 0; i < shuffle.length; i++) {
-		document.getElementById("randomSentence").innerHTML += "<button class='wordBtn'>" + shuffle[i] + "</button>";
+function resetBtn(){
+	document.getElementById("randomSentence").innerHTML="";
+	document.getElementById("displayText2").innerHTML="";
+	document.getElementById("reformBtn").innerHTML="";
+	document.getElementById("formedSentence").innerHTML=""; 
+	for (var i = 0; i < shuffle.length; i++) {
+		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
-	}
-*/
+}
+
 	function randomHinSentence(){
 		var index= sentenceHin[Math.floor(Math.random() * sentenceHin.length)];
-		var shuffle= shuffleWords(index);
+		shuffle= shuffleWords(index);
 		for (var i = 0; i < shuffle.length; i++) {
 		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
 }
 
-	function shuffleWords(arra1) {
-    	var ctr = arra1.length, temp, index;
-    	while (ctr > 0) {
-        	index = Math.floor(Math.random() * ctr);
-        	ctr--;
-        	temp = arra1[ctr];
-        	arra1[ctr] = arra1[index];
-        	arra1[index] = temp;
+	function shuffleWords(a) {
+    	var c = a.length, temp, index;
+    	while (c > 0) {
+        	index = Math.floor(Math.random() * c);
+        	c--;
+        	temp = a[c];
+        	a[c] = a[index];
+        	a[index] = temp;
     }
-    return arra1;
+    return a;
 }
 
 
