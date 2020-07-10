@@ -84,3 +84,16 @@ hr {
   color: red;
   font-weight: bold;
 }
+
+.correctAnsBtn{
+  background-color: darkblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
