@@ -72,3 +72,15 @@ hr {
   border-style: inset;
   border-width: 1px;
 } 
+
+#correctA{
+  font-size: 30px;
+  color: green;
+  font-weight: bold;
+}
+
+#wrongA{
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}
