@@ -34,7 +34,7 @@
 			document.getElementById("answerList").innerHTML="";
 			document.getElementById("hideBtn").innerHTML="";
 			document.getElementById("getAnswer1").innerHTML="";
-
+			document.getElementById("correctnessBtn").innerHTML="";
 			var x= document.getElementById("selected").value;
 			var message="";
 			if(x=='english'){
@@ -155,6 +155,9 @@ function checkCorrectness(){
 				document.getElementById("correctA").innerHTML="";
 				document.getElementById("wrongA").innerHTML="Wrong answer"+" "+"<i class='fa fa-frown-o' aria-hidden='true'></i>";
 				document.getElementById("getAnswer").innerHTML="<button class='correctAnsBtn' onclick='getAnswers()'>"+"GET CORRECT SENTENCE"+"</button>";
+				document.getElementById("getAnswer1").innerHTML="";
+				document.getElementById("hideBtn").innerHTML="";
+    	  		document.getElementById("answerList").innerHTML="";
 				}
 
 }
@@ -229,7 +232,7 @@ if(answerExists == ""){
 	//alert("Found correct sentences :"+correctSentences[j]);
     document.getElementById("answerList").innerHTML+=correctSentences[j].join(" ")+"<br>";
   }
-  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
+  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "Hide the correct sentence" + "</button>";
   document.getElementById("getAnswer").innerHTML="";
 }
 }
@@ -296,7 +299,7 @@ if(answerExists == ""){
 	//alert("Found correct sentences :"+correctSentences[j]);
     document.getElementById("answerList").innerHTML+=correctSentences[j].join(" ")+"<br>";
   }
- document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
+ document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "Hide the correct sentence" + "</button>";
   document.getElementById("getAnswer").innerHTML="";
 }	
 }
@@ -306,6 +309,7 @@ function hideAnswers(){
 	var x=document.getElementById("answerList");
 	x.style.display="none";
 	document.getElementById("hideBtn").innerHTML="";
+	document.getElementById("getAnswer").innerHTML="";
 	document.getElementById("getAnswer1").innerHTML="<button class='correctAnsBtn' onclick='showAnswers()'>"+"Get Answers"+"</button>";
 }
 
@@ -313,7 +317,7 @@ function showAnswers(){
 	var v=document.getElementById("answerList");
 	v.style.display="block";
 	document.getElementById("getAnswer1").innerHTML="";
-  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
+  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "Hide the correct sentence" + "</button>";
 
 }
 
