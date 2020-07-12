@@ -31,6 +31,9 @@
 			document.getElementById("wrongA").innerHTML="";
 			document.getElementById("correctA").innerHTML="";
 			document.getElementById("getAnswer").innerHTML="";
+			document.getElementById("answerList").innerHTML="";
+			document.getElementById("hideBtn").innerHTML="";
+			document.getElementById("getAnswer1").innerHTML="";
 
 			var x= document.getElementById("selected").value;
 			var message="";
@@ -87,6 +90,10 @@ function resetBtn(){
 	document.getElementById("wrongA").innerHTML="";
 	document.getElementById("correctA").innerHTML="";
 	document.getElementById("getAnswer").innerHTML="";
+	document.getElementById("correctnessBtn").innerHTML="";
+	document.getElementById("answerList").innerHTML="";
+	document.getElementById("hideBtn").innerHTML="";
+	document.getElementById("getAnswer1").innerHTML="";
 	for (var i = 0; i < shuffle.length; i++) {
 		document.getElementById("randomSentence").innerHTML += "<button id='"+i+"' class='wordBtn' onclick='myFunction("+i+")'>" + shuffle[i] + "</button>";
 	}
@@ -147,8 +154,166 @@ function checkCorrectness(){
 				} else{
 				document.getElementById("correctA").innerHTML="";
 				document.getElementById("wrongA").innerHTML="Wrong answer"+" "+"<i class='fa fa-frown-o' aria-hidden='true'></i>";
-				document.getElementById("getAnswer").innerHTML="<button class='correctAnsBtn'>"+"GET CORRECT SENTENCE"+"</button>";
+				document.getElementById("getAnswer").innerHTML="<button class='correctAnsBtn' onclick='getAnswers()'>"+"GET CORRECT SENTENCE"+"</button>";
 				}
+
+}
+
+function getAnswers(){
+  	correctSentences=[];
+  	var count=0;
+  	var isFound=false;
+ 	var answerExists= document.getElementById("answerList").textContent;
+	var languageArray=document.getElementById("selected").value;
+
+if(languageArray == 'english'){
+if(answerExists == ""){ 
+  for(var k=0; k<englishArray.length+1; k++)
+   
+  {
+	//alert("Entering in iteration of main list :" +k);
+	if(isFound==true && count== englishArray[k-1][0].length)
+        {
+          //alert(" found is true and the first value of K is :"+k);
+			var z = k;
+          //alert("value of z is set to :" +z);
+		if (z==1)
+           {
+			for(p=0; p<englishArray[z-1].length;p++)
+               {
+                  correctSentences[p]=(englishArray[z-1][p]);
+                  //alert("Inside for loop to get correctSentences when z=1 and loop number is :"+p+"  : and the value of correctSentences is ; "+correctSentences);
+                  //alert("value of z is :"+z);
+               }
+            }
+		if (z>1)
+           {
+			for(p=0; p<englishArray[z-1].length;p++)
+               {
+                  correctSentences[p]=(englishArray[k-1][p]);
+                 // alert("Inside for loop to get correctSentences when z>1 and p loop number is :"+p+"  : and the value of correctSentences is ; "+correctSentences);
+                  //alert("value of z is :"+z);
+               }
+                   
+            }
+         
+            break;
+        }
+      	for(var i=0; i<displayArray.length; i++)
+		{
+            //alert("Inside for loop and the first element of englishArray is : "+englishArray[k][0]);
+            //alert("inside for loop :"+ i +": and displayArray element is :"+displayArray[i]);
+            isFound=englishArray[k][0].includes(displayArray[i]);
+            //alert("inside for loop :"+ i +": is found flag "+isFound);
+			if(isFound==true)
+            {
+              count++;
+              //alert("Increasing Count : "+ count);
+            }
+
+            if(isFound==false)
+            {
+              count= 0;
+              break;
+              
+            }
+
+          }
+}
+  //alert(correctSentences[0]);
+    //alert(correctSentences[1]);
+
+  //alert(correctSentences);
+  for(j=0; j<correctSentences.length;j++)
+  {
+	//alert("Found correct sentences :"+correctSentences[j]);
+    document.getElementById("answerList").innerHTML+=correctSentences[j].join(" ")+"<br>";
+  }
+  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
+  document.getElementById("getAnswer").innerHTML="";
+}
+}
+
+if(languageArray == 'hindi'){
+if(answerExists == ""){ 
+  for(var k=0; k<hindiArray.length+1; k++)   
+  {
+	//alert("Entering in iteration of main list :" +k);
+	if(isFound==true && count== hindiArray[k-1][0].length)
+        {
+          //alert(" found is true and the first value of K is :"+k);
+			var z = k;
+          //alert("value of z is set to :" +z);
+		if (z==1)
+           {
+			for(p=0; p<hindiArray[z-1].length;p++)
+               {
+                  correctSentences[p]=(hindiArray[z-1][p]);
+                  //alert("Inside for loop to get correctSentences when z=1 and loop number is :"+p+"  : and the value of correctSentences is ; "+correctSentences);
+                  //alert("value of z is :"+z);
+               }
+            }
+		if (z>1)
+           {
+			for(p=0; p<hindiArray[z-1].length;p++)
+               {
+                  correctSentences[p]=(hindiArray[k-1][p]);
+                 // alert("Inside for loop to get correctSentences when z>1 and p loop number is :"+p+"  : and the value of correctSentences is ; "+correctSentences);
+                  //alert("value of z is :"+z);
+               }
+                   
+            }
+         
+            break;
+        }
+      	for(var i=0; i<displayArray.length; i++)
+		{
+            //alert("Inside for loop and the first element of englishArray is : "+englishArray[k][0]);
+            //alert("inside for loop :"+ i +": and displayArray element is :"+displayArray[i]);
+            isFound=hindiArray[k][0].includes(displayArray[i]);
+            //alert("inside for loop :"+ i +": is found flag "+isFound);
+			if(isFound==true)
+            {
+              count++;
+              //alert("Increasing Count : "+ count);
+            }
+
+            if(isFound==false)
+            {
+              count= 0;
+              break;
+              
+            }
+
+          }
+}
+  //alert(correctSentences[0]);
+    //alert(correctSentences[1]);
+
+  //alert(correctSentences);
+  for(j=0; j<correctSentences.length;j++)
+  {
+	//alert("Found correct sentences :"+correctSentences[j]);
+    document.getElementById("answerList").innerHTML+=correctSentences[j].join(" ")+"<br>";
+  }
+ document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
+  document.getElementById("getAnswer").innerHTML="";
+}	
+}
+}
+
+function hideAnswers(){
+	var x=document.getElementById("answerList");
+	x.style.display="none";
+	document.getElementById("hideBtn").innerHTML="";
+	document.getElementById("getAnswer1").innerHTML="<button class='correctAnsBtn' onclick='showAnswers()'>"+"Get Answers"+"</button>";
+}
+
+function showAnswers(){
+	var v=document.getElementById("answerList");
+	v.style.display="block";
+	document.getElementById("getAnswer1").innerHTML="";
+  document.getElementById("hideBtn").innerHTML="<button class='hide' onclick='hideAnswers()'>"+ "hide the correct sentence" + "</button>";
 
 }
 

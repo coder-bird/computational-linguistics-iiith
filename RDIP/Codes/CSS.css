@@ -85,7 +85,7 @@ hr {
   font-weight: bold;
 }
 
-.correctAnsBtn{
+.correctAnsBtn, .hide{
   background-color: darkblue;
   border: none;
   color: white;
