@@ -11,6 +11,7 @@ function showCorpus(){
 		document.getElementById('answer').innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById('continue').innerHTML="";
+		document.getElementById('tab1').innerHTML="";
 		document.getElementById("corp1").innerHTML=corpus1;
 		document.getElementById("display").innerHTML="Enter the correct number of tokens and types from the corpus:";
 		document.getElementById("tab").innerHTML="<table><tr><td>"+"#tokens"+"</td><td>"+"<input id='token' type='text'>"+"</td></tr><tr><td>"+"#types"+"</td><td>"+"<input id='types' type='text'>"+"</td></tr></table>";
@@ -20,6 +21,7 @@ function showCorpus(){
 		document.getElementById('answer').innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById('continue').innerHTML="";
+		document.getElementById('tab1').innerHTML="";
 		document.getElementById("corp1").innerHTML=corpus2;
 		document.getElementById("display").innerHTML="Enter the correct number of tokens and types from the corpus:";
 		document.getElementById("tab").innerHTML="<table><tr><td>"+"#tokens"+"</td><td>"+"<input id='token' type='text'>"+"</td></tr><tr><td>"+"#types"+"</td><td>"+"<input id='types' type='text'>"+"</td></tr></table?";
@@ -30,6 +32,7 @@ function showCorpus(){
 		document.getElementById('answer').innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById('continue').innerHTML="";
+		document.getElementById('tab1').innerHTML="";
 		document.getElementById("corp1").innerHTML=corpus3;
 		document.getElementById("display").innerHTML="Enter the correct number of tokens and types from the corpus:";
 		document.getElementById("tab").innerHTML="<table><tr><td>"+"#tokens"+"</td><td>"+"<input id='token' type='text'>"+"</td></tr><tr><td>"+"#types"+"</td><td>"+"<input id='types' type='text'>"+"</td></tr></table>";
@@ -68,7 +71,7 @@ function compare(corp){
 		document.getElementById('answer').innerHTML="Right answer!";
 		document.getElementById('token').style.backgroundColor="green";
 		document.getElementById('types').style.backgroundColor="green";
-		document.getElementById('continue').innerHTML="<button>continue</button>";
+		document.getElementById('continue').innerHTML="<button onclick='newTypes()'>continue</button>";
 	}
 	if(token== tokens(corp) && type1!= types(corp)){
 		document.getElementById('answer').innerHTML="Wrong answer!";
@@ -85,4 +88,11 @@ function compare(corp){
 		document.getElementById('token').style.backgroundColor="red";
 		document.getElementById('types').style.backgroundColor="red";
 	}
+}
+
+function newTypes(){
+	document.getElementById('answer').innerHTML="Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types";
+	document.getElementById("submitBtn").innerHTML="";
+	document.getElementById('continue').innerHTML="#New types:";
+	document.getElementById('tab1').innerHTML="<input id='newtype' type=text>";
 }
