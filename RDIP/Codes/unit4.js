@@ -19,6 +19,10 @@ function showCorpus(){
 	var x=document.getElementById("selected").value;
 	if(x=='Corpus1'){
 		document.getElementById('answer').innerHTML="";
+		document.getElementById('answer1').innerHTML="";
+		document.getElementById('answer2').innerHTML="";
+		document.getElementById('correct').innerHTML="";
+		document.getElementById('wrong').innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById("submitBtn1").innerHTML="";
 		document.getElementById('continue').innerHTML="";
@@ -30,6 +34,11 @@ function showCorpus(){
 	}
 	if(x=='Corpus2'){
 		document.getElementById('answer').innerHTML="";
+		document.getElementById('answer1').innerHTML="";
+		document.getElementById('answer2').innerHTML="";
+		document.getElementById('correct').innerHTML="";
+		document.getElementById('wrong').innerHTML="";
+		document.getElementById('submitBtn1').innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById('continue').innerHTML="";
 		document.getElementById('tab1').innerHTML="";
@@ -42,6 +51,11 @@ function showCorpus(){
 	}
 	if(x=='Corpus3'){
 		document.getElementById('answer').innerHTML="";
+		document.getElementById('answer1').innerHTML="";
+		document.getElementById('answer2').innerHTML="";
+		document.getElementById('correct').innerHTML="";
+		document.getElementById('wrong').innerHTML="";
+		document.getElementById("submitBtn1").innerHTML="";
 		document.getElementById("submitBtn").innerHTML="";
 		document.getElementById('continue').innerHTML="";
 		document.getElementById('tab1').innerHTML="";
@@ -75,28 +89,32 @@ function uniqueWords(value, index, self) {
 }
 
 function compare(corp){
+	document.getElementById('correct').innerHTML="";
+	document.getElementById('wrong').innerHTML="";
+	document.getElementById('answer1').innerHTML="";
+	document.getElementById('answer2').innerHTML="";
 	document.getElementById('continue').innerHTML="";
 	var token= document.getElementById('token').value;
 	var type1= document.getElementById('types').value;
 	var x=document.getElementById('token').innerHTML;
 	if(token== tokens(corp) && type1== types(corp)){
-		document.getElementById('answer').innerHTML="Right answer!";
+		document.getElementById('answer1').innerHTML="Right answer!";
 		document.getElementById('token').style.backgroundColor="green";
 		document.getElementById('types').style.backgroundColor="green";
 		document.getElementById('continue').innerHTML="<button onclick='newTypes()'>continue</button>";
 	}
 	if(token== tokens(corp) && type1!= types(corp)){
-		document.getElementById('answer').innerHTML="Wrong answer!";
+		document.getElementById('answer2').innerHTML="Wrong answer!";
 		document.getElementById('token').style.backgroundColor="green";
 		document.getElementById('types').style.backgroundColor="red";
 	}
 	if(token!= tokens(corp) && type1== types(corp)){
-		document.getElementById('answer').innerHTML="Wrong answer!";
+		document.getElementById('answer2').innerHTML="Wrong answer!";
 		document.getElementById('token').style.backgroundColor="red";
 		document.getElementById('types').style.backgroundColor="green";
 	}
 	if(token!= tokens(corp) && type1!= types(corp)){
-		document.getElementById('answer').innerHTML="Wrong answer!";
+		document.getElementById('answer2').innerHTML="Wrong answer!";
 		document.getElementById('token').style.backgroundColor="red";
 		document.getElementById('types').style.backgroundColor="red";
 	}
@@ -105,6 +123,10 @@ function compare(corp){
 function newTypes(){
 	document.getElementById('answer').innerHTML="Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types";
 	document.getElementById("submitBtn").innerHTML="";
+	document.getElementById('answer1').innerHTML="";
+	document.getElementById('answer2').innerHTML="";
+	document.getElementById('correct').innerHTML="";
+	document.getElementById('wrong').innerHTML="";
 	document.getElementById('continue').innerHTML="#New types:";
 	document.getElementById('tab1').innerHTML="<input id='newtype' type=text>";
 	var x=document.getElementById("selected").value;
@@ -134,11 +156,15 @@ function newSubmit(str){
 }
 
 function compare1(str){
+	document.getElementById('correct').innerHTML="";
+	document.getElementById('wrong').innerHTML="";
 	var newType= document.getElementById('newtype').value;
 	if(newType == newSubmit(str)){
-		alert("Correct");
+		document.getElementById('correct').innerHTML="Right answer!";
+		document.getElementById('newtype').style.backgroundColor="green"
 	}
 	else{
-		alert("Wrong");
+	document.getElementById('wrong').innerHTML="Wrong answer!";
+	document.getElementById('newtype').style.backgroundColor="red";
 	}
 }

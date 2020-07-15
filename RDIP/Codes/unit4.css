@@ -19,3 +19,11 @@ table,tr,td{
 input{
 	width:60px;
 }
+
+#correct, #answer1{
+	color: green;
+}
+
+#wrong, #answer2{
+	color: red;
+}
