@@ -1,7 +1,7 @@
 //ANSWERS- CORPUS1- 169,80    CORPUS2- 111,65   CORPUS3- 219, 95
 
 
-
+//NEW TYPES ANSWRS- CORPUS1= 78    CORPUS2= 64    CORPUS3= 91
 
 
 
@@ -130,6 +130,7 @@ function newSubmit(str){
 		stemmer.stem();
 		s.push(stemmer.getCurrent());
 	}
-	alert(s);
+	var unique = s.filter(uniqueWords);
+	alert(unique.length);
 }
 
