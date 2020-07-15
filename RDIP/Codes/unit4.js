@@ -107,16 +107,15 @@ function newTypes(){
 	document.getElementById("submitBtn").innerHTML="";
 	document.getElementById('continue').innerHTML="#New types:";
 	document.getElementById('tab1').innerHTML="<input id='newtype' type=text>";
-	alert("Click submit");
 	var x=document.getElementById("selected").value;
 	if(x=='Corpus1'){
-	document.getElementById("submitBtn1").innerHTML="<button onclick='newSubmit(corpus1)'>Submit</button>"
+	document.getElementById("submitBtn1").innerHTML="<button onclick='compare1(corpus1)'>Submit</button>"
 }
 if(x=='Corpus2'){
-	document.getElementById("submitBtn1").innerHTML="<button onclick='newSubmit(corpus2)'>Submit</button>"
+	document.getElementById("submitBtn1").innerHTML="<button onclick='compare1(corpus2)'>Submit</button>"
 }
 if(x=='Corpus3'){
-	document.getElementById("submitBtn1").innerHTML="<button onclick='newSubmit(corpus3)'>Submit</button>"
+	document.getElementById("submitBtn1").innerHTML="<button onclick='compare1(corpus3)'>Submit</button>"
 }
 }
 
@@ -131,6 +130,15 @@ function newSubmit(str){
 		s.push(stemmer.getCurrent());
 	}
 	var unique = s.filter(uniqueWords);
-	alert(unique.length);
+	return unique.length;
 }
 
+function compare1(str){
+	var newType= document.getElementById('newtype').value;
+	if(newType == newSubmit(str)){
+		alert("Correct");
+	}
+	else{
+		alert("Wrong");
+	}
+}
