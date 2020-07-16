@@ -1,0 +1,68 @@
+.container{
+	text-align: center;
+	align-content: center;
+	margin-right: 100px;
+	margin-left: 100px;
+}
+
+option{
+	text-align: center;
+}
+
+table,tr,td{
+	margin-left: 485px;
+	border: 1px solid black;
+	border-collapse: collapse; 
+	padding: 5px;
+}
+
+input{
+	width:60px;
+}
+
+#correct, #answer1{
+	font-size: 30px;
+  	color: green;
+  	font-weight: bold;
+}
+
+#wrong, #answer2{
+	font-size: 30px;
+  	color: red;
+  	font-weight: bold;
+}
+
+#selected{
+	width:400px;
+	text-align: center;
+	padding:5px;
+	font-size: 20px;
+}
+
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+} 
+
+option{
+	text-align: center;
+}
+
+button{
+	background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width:250px;
+}
