@@ -30,6 +30,7 @@ var hinList='<select id="select2"><option value="noun">Noun</option><option valu
 
 
 function chooseLang(){
+	document.getElementById('submitBtn').innerHTML="";
 	document.getElementById("myTable").innerHTML="";
 	document.getElementById('displayTxt').innerHTML="";		
 	var optn= document.getElementById('selected').value;
@@ -51,7 +52,6 @@ function chooseLang(){
 
 
 function createTable(){
-
 	 	document.getElementById("myTable").innerHTML="";
 	 	document.getElementById('displayTxt').innerHTML="Select the POS tag for corresponding words"
 	var x = document.createElement("TABLE");
@@ -111,6 +111,8 @@ function createTable(){
 	for(var i=selectedValue.length-1; i>=0; i--){
 		insertRows(selectedValue[i]);
 	}
+
+	document.getElementById('submitBtn').innerHTML="<button>Submit</button>"
 }
 
 		
@@ -131,21 +133,5 @@ function insertRows(y){
 	}
 }
 
-function posDropbox(){
-	var x = document.createElement("select");
-	  x.setAttribute("id", "pos");
-	  document.body.appendChild(x);
 
-	var y = document.createElement("option");
-	  y.setAttribute("id", "noun");
-	  var t=document.createTextNode("noun");
-	  y.appendChild(t);
-	  document.getElementById("pos").appendChild(y);
-
-	  var z = document.createElement("option");
-	  z.setAttribute("id", "pronoun");
-	  var t=document.createTextNode("pronoun");
-	  z.appendChild(t);
-	  document.getElementById("pos").appendChild(z);
-}
 
