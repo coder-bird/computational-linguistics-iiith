@@ -25,6 +25,10 @@ H5=["पेड़", "से", "पत्ते", "गिर", "गए।"]
 SEnglish=[SE1,SE2,SE3,SE4,SE5];
 SHindi=[SH1,SH2,SH3,SH4,SH5];
 
+var engList='<select id="select2"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="preposition">Preposition</option></select>'
+var hinList='<select id="select2"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
+
+
 function chooseLang(){
 	document.getElementById("myTable").innerHTML="";
 	document.getElementById('displayTxt').innerHTML="";		
@@ -111,7 +115,7 @@ function createTable(){
 
 		
 function insertRows(y){
-	
+	var optn= document.getElementById('selected').value;
 	var tab= document.getElementById('myTable');
 	var row= tab.insertRow(1);
 	var cell1= row.insertCell(0);
@@ -119,5 +123,29 @@ function insertRows(y){
 	var cell3= row.insertCell(2);
 	var cell4= row.insertCell(3);
 	cell1.innerHTML= y;
-	cell2.innerHTML=" ";
+	if(optn=='english'){
+		cell2.innerHTML=engList;
+	}
+	if(optn=='hindi'){
+		cell2.innerHTML=hinList;
+	}
 }
+
+function posDropbox(){
+	var x = document.createElement("select");
+	  x.setAttribute("id", "pos");
+	  document.body.appendChild(x);
+
+	var y = document.createElement("option");
+	  y.setAttribute("id", "noun");
+	  var t=document.createTextNode("noun");
+	  y.appendChild(t);
+	  document.getElementById("pos").appendChild(y);
+
+	  var z = document.createElement("option");
+	  z.setAttribute("id", "pronoun");
+	  var t=document.createTextNode("pronoun");
+	  z.appendChild(t);
+	  document.getElementById("pos").appendChild(z);
+}
+
