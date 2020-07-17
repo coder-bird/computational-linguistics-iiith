@@ -4,3 +4,10 @@
 	margin-right: 100px;
 	margin-left: 100px;
 }
+
+table,tr,td,th{
+	margin-left:588px;
+	border: 1px solid black;
+	border-collapse: collapse; 
+	padding: 5px;
+}
