@@ -29,13 +29,13 @@ var engList='<select id="select2"><option value="noun">Noun</option><option valu
 var hinList='<select id="select2"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
 
 
+
 function chooseLang(){
 	document.getElementById('submitBtn').innerHTML="";
 	document.getElementById("myTable").innerHTML="";
 	document.getElementById('displayTxt').innerHTML="";		
 	var optn= document.getElementById('selected').value;
 	if(optn=='english'){
-
 		document.getElementById('senDropbox').innerHTML="<select id='b' onchange='createTable()'><option value='null'>"+ "---Select a sentence---" +"</option>"+"<option value='0' id='SE1'>"+ E1.join(" ") +"</option>"+"</option>"+"<option value='1' id='SE2'>"+ E2.join(" ") +"</option>"+"</option>"+"<option value='2' id='SE3'>"+ E3.join(" ") +"</option>"+"</option>"+"<option value='3' id='SE4'> "+ E4.join(" ") +"</option>"+"<option value='4' id='SE5'>"+ E5.join(" ") +"</option></select>"
 	} 
 	if(optn=='hindi'){
@@ -112,7 +112,7 @@ function createTable(){
 		insertRows(selectedValue[i]);
 	}
 
-	document.getElementById('submitBtn').innerHTML="<button>Submit</button>"
+	document.getElementById('submitBtn').innerHTML="<button>Submit</button>";
 }
 
 		
