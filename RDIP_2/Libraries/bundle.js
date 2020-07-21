@@ -31,11 +31,14 @@ SHmap2 = ["noun", "postposition", "noun", "adjective", "verb", "verb"],
 SHmap3 = ["interjection", "pronoun", "adjective", "verb"],
 SHmap4 = ["noun", "postposition", "noun", "verb", "verb"];
 
+var isCorrect = null;
+var isWrong = null;
 
 let SEnglish=[SE1,SE2,SE3,SE4,SE5];
 let SHindi=[SH1,SH2,SH3,SH4,SH5];
 
 window.selectDrop= function(f){
+  document.getElementById('getAnswerBtn').innerHTML="";
 var optn= document.getElementById('selected').value;
   if(optn=='english'){
 var engList='<select id="select'+f+'" ><option value="NN">Noun</option><option value="PRP">Pronoun</option><option value="CC">Conjunction</option><option value="UH">Interjection</option><option value="VB">Verb</option><option value="DT">Determiner</option><option value="JJ">Adjective</option><option value="RB">Adverb</option><option value="IN">Preposition</option></select>'
@@ -54,7 +57,8 @@ return hinList;
 window.chooseLang=function(){
   document.getElementById('submitBtn').innerHTML="";
   document.getElementById("myTable").innerHTML="";
-  document.getElementById('displayTxt').innerHTML="";   
+  document.getElementById('displayTxt').innerHTML=""; 
+  document.getElementById('getAnswerBtn').innerHTML="";  
   var optn= document.getElementById('selected').value;
   if(optn=='english'){
     document.getElementById('senDropbox').innerHTML="<select id='b' onchange='createTable()'><option value='null'>"+ "---Select a sentence---" +"</option>"+"<option value='0' id='SE1'>"+ E1.join(" ") +"</option>"+"</option>"+"<option value='1' id='SE2'>"+ E2.join(" ") +"</option>"+"</option>"+"<option value='2' id='SE3'>"+ E3.join(" ") +"</option>"+"</option>"+"<option value='3' id='SE4'> "+ E4.join(" ") +"</option>"+"<option value='4' id='SE5'>"+ E5.join(" ") +"</option></select>"
@@ -73,6 +77,7 @@ window.chooseLang=function(){
 
 
 window.createTable= function(){
+    document.getElementById('getAnswerBtn').innerHTML="";
     document.getElementById("myTable").innerHTML="";
     document.getElementById('displayTxt').innerHTML="Select the POS tag for corresponding words"
   var x = document.createElement("TABLE");
@@ -161,6 +166,10 @@ window.insertRows= function(y,j){
 
 
 window.checkAnswer= function(){
+  var isWrong = false;
+  document.getElementById('getAnswerBtn').innerHTML="";
+//    document.getElementById('getAnswerBtn').value="";
+
     var optn= document.getElementById('selected').value;
    if(optn=='english'){
 
@@ -182,13 +191,19 @@ for (var i in taggedWords) {
  
   i=Number(i);
    if(res == true){
+    isCorrect=true;
     document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
 
     } else{
-
+      isWrong = true;
       document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
     }
 }
+
+if(isWrong == true){
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn'>Get Answer</button>" ; 
+}
+
 }
 
 if(optn=='hindi'){
@@ -199,15 +214,19 @@ if(optn=='hindi'){
       var t = SHmapValue[i];
       var z = document.getElementById("select"+i).value;
       if( t == z){
+        isCorrect=true;
             document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
 
       }else{
-
+        isWrong = true;
       document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
     }
 
     }
-      
+      if(isWrong == true){
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn'>Get Answer</button>"  
+}
+
     }  
 }
 
