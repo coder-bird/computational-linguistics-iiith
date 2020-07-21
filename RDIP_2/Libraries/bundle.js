@@ -1,17 +1,215 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-var pos = require('pos');
 
-var words = new pos.Lexer().lex('This is some sample text. This text can contain multiple sentences.'); 
-var tagger = new pos.Tagger();
-var taggedWords = tagger.tag(words);
-for (i in taggedWords) {
-    var taggedWord = taggedWords[i];
-    var word = taggedWord[0];
-    var tag = taggedWord[1];
-    console.log(word + " /" + tag);
+var pos = require('pos');
+let SE1=["The", "child", "liked", "the", "chocolate"],
+SE2=["She", "was", "stopped", "by", "the", "bravest", "knight"],
+SE3=["Mary", "baked", "a", "cake", "for", "his", "birthday"],
+SE4=["She", "decorated", "the", "cake", "carefully"],
+SE5=["Mary", "wore", "a", "dress", "with", "polka", "dots"],
+
+E1=["The", "child", "liked", "the", "chocolate."],
+E2=["She", "was", "stopped", "by", "the", "bravest", "knight."],
+E3=["Mary", "baked", "a", "cake", "for", "his", "birthday"],
+E4=["She", "decorated", "the", "cake", "carefully"],
+E5=["Mary", "wore", "a", "dress", "with", "polka", "dots."],
+
+SH1=["राम", "ने", "सीता", "के", "लिए", "फल", "तोड़ा"],
+SH2=["छोटे", "बच्चे", "पाठशाला", "जल्दी", "आयेंगे"],
+SH3=["मेहनत", "का", "फल", "मीठा", "होता", "है"],
+SH4=["वाह", "वह", "खूबसूरत", "है"],
+SH5=["पेड़", "से", "पत्ते", "गिर", "गए"],
+
+H1=["राम", "ने", "सीता", "के", "लिए", "फल", "तोड़ा|"],
+H2=["छोटे", "बच्चे", "पाठशाला", "जल्दी", "आयेंगे|"],
+H3=["मेहनत", "का", "फल", "मीठा", "होता", "है|"],
+H4=["वाह!", "वह", "खूबसूरत", "है।"],
+H5=["पेड़", "से", "पत्ते", "गिर", "गए।"];
+
+let SHmap0 = ["noun", "postposition", "noun", "postposition", "postposition", "noun", "verb"],
+SHmap1 = ["adjective", "noun", "noun" , "adverb", "verb"],
+SHmap2 = ["noun", "postposition", "noun", "adjective", "verb", "verb"],
+SHmap3 = ["interjection", "pronoun", "adjective", "verb"],
+SHmap4 = ["noun", "postposition", "noun", "verb", "verb"];
+
+
+let SEnglish=[SE1,SE2,SE3,SE4,SE5];
+let SHindi=[SH1,SH2,SH3,SH4,SH5];
+
+window.selectDrop= function(f){
+var optn= document.getElementById('selected').value;
+  if(optn=='english'){
+var engList='<select id="select'+f+'" ><option value="NN">Noun</option><option value="PRP">Pronoun</option><option value="CC">Conjunction</option><option value="UH">Interjection</option><option value="VB">Verb</option><option value="DT">Determiner</option><option value="JJ">Adjective</option><option value="RB">Adverb</option><option value="IN">Preposition</option></select>'
+
+return engList;
+}
+if(optn=='hindi'){
+var hinList='<select id="select'+f+'"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
+return hinList;
+
+}
+
+}
+ 
+
+window.chooseLang=function(){
+  document.getElementById('submitBtn').innerHTML="";
+  document.getElementById("myTable").innerHTML="";
+  document.getElementById('displayTxt').innerHTML="";   
+  var optn= document.getElementById('selected').value;
+  if(optn=='english'){
+    document.getElementById('senDropbox').innerHTML="<select id='b' onchange='createTable()'><option value='null'>"+ "---Select a sentence---" +"</option>"+"<option value='0' id='SE1'>"+ E1.join(" ") +"</option>"+"</option>"+"<option value='1' id='SE2'>"+ E2.join(" ") +"</option>"+"</option>"+"<option value='2' id='SE3'>"+ E3.join(" ") +"</option>"+"</option>"+"<option value='3' id='SE4'> "+ E4.join(" ") +"</option>"+"<option value='4' id='SE5'>"+ E5.join(" ") +"</option></select>"
+  } 
+  if(optn=='hindi'){
+    document.getElementById('senDropbox').innerHTML="<select id='b' onchange='createTable()'><option value='null'>"+ "---Select a sentence---" +"</option>"+"<option value='0' id='SH1'>"+ H1.join(" ") +"</option>"+"</option>"+"<option value='1' id='SH2'>"+ H2.join(" ") +"</option>"+"<option value='2' id='SH3'>"+ H3.join(" ") +"</option>"+"<option value='3' id='SH4'> "+ H4.join(" ") +"</option>"+"<option value='4' id='SH5'>"+ H5.join(" ") +"</option></select>"
+
+  }
+
+  if(optn=='---Select language---'){
+
+    document.getElementById('senDropbox').innerHTML=""; 
+  }
+  
 }
 
 
+window.createTable= function(){
+    document.getElementById("myTable").innerHTML="";
+    document.getElementById('displayTxt').innerHTML="Select the POS tag for corresponding words"
+  var x = document.createElement("TABLE");
+    x.setAttribute("id", "myTable");
+    document.body.appendChild(x);
+
+  
+    var y = document.createElement("TR");
+    y.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(y);
+
+    var z = document.createElement("TD");
+    var t = document.createTextNode("LEXICON");
+    z.appendChild(t);
+    document.getElementById("myTr").appendChild(z);
+
+        var y = document.createElement("TR"); 
+    y.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(y);
+
+    var z = document.createElement("TD");
+    var t = document.createTextNode("POS");
+    z.appendChild(t);
+    document.getElementById("myTr").appendChild(z);
+
+        var y = document.createElement("TR");
+    y.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(y);
+
+    var z = document.createElement("TD");
+    var t = document.createTextNode("");
+    z.appendChild(t);
+    document.getElementById("myTr").appendChild(z);
+
+        var y = document.createElement("TR");
+    y.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(y);
+
+    var z = document.createElement("TD");
+    var t = document.createTextNode("");
+    z.appendChild(t);
+    document.getElementById("myTr").appendChild(z);
+   
+  var optn= document.getElementById('selected').value;
+  if(optn=='english'){
+
+    var selectedValue= SEnglish[document.getElementById('b').value];
+
+  }
+
+  if(optn=='hindi'){
+
+    var selectedValue= SHindi[document.getElementById('b').value];
+
+    } 
+      
+  for(var i=selectedValue.length-1; i>=0; i--){
+
+//    var h =selectedValue.length-i;
+    insertRows(selectedValue[i],i);
+  }
+
+  document.getElementById('submitBtn').innerHTML="<button onclick='checkAnswer()'>Submit</button>";
+}
+
+
+window.insertRows= function(y,j){
+
+  var optn= document.getElementById('selected').value;
+  var tab= document.getElementById('myTable');
+  var row= tab.insertRow(1);
+  var cell1= row.insertCell(0);
+  var cell2= row.insertCell(1);
+  var cell3= row.insertCell(2);
+  var cell4= row.insertCell(3);
+  cell1.innerHTML= y;
+  if(optn=='english'){
+
+    cell2.innerHTML= selectDrop(j); 
+  }
+  if(optn=='hindi'){
+    cell2.innerHTML=selectDrop(j);
+  }
+}
+
+
+
+window.checkAnswer= function(){
+    var optn= document.getElementById('selected').value;
+   if(optn=='english'){
+
+    var selectedValue= SEnglish[document.getElementById('b').value];
+
+var words = new pos.Lexer().lex(selectedValue.join(" ")); //You have to enter the sentences here
+var tagger = new pos.Tagger();
+var taggedWords = tagger.tag(words);
+for (var i in taggedWords) {
+    var taggedWord = taggedWords[i];
+    var word = taggedWord[0];
+    var tag = taggedWord[1];
+
+   console.log(word + " /" + tag);
+  var myId=document.getElementById("select"+i).value;
+  var str = tag;
+  var patt = new RegExp(myId);
+  var res = patt.test(str);
+ 
+  i=Number(i);
+   if(res == true){
+    document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
+
+    } else{
+
+      document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
+    }
+}
+}
+
+if(optn=='hindi'){
+
+    var mapValue= document.getElementById('b').value;
+    var SHmapValue= eval("SHmap"+mapValue);
+    for(var i=0; i<SHmapValue.length; i++){
+      var t = SHmapValue[i];
+      var z = document.getElementById("select"+i).value;
+      if( t == z){
+            document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
+
+      }else{
+
+      document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
+    }
+
+    }
+      
+    }  
+}
 
 
 },{"pos":4}],2:[function(require,module,exports){

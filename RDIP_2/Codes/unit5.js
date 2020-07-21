@@ -27,9 +27,6 @@ SHindi=[SH1,SH2,SH3,SH4,SH5];
 
 var engList='<select id="select2"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="preposition">Preposition</option></select>'
 var hinList='<select id="select2"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
-
-
-
 function chooseLang(){
 	document.getElementById('submitBtn').innerHTML="";
 	document.getElementById("myTable").innerHTML="";
@@ -132,6 +129,5 @@ function insertRows(y){
 		cell2.innerHTML=hinList;
 	}
 }
-
 
 
