@@ -34,6 +34,8 @@ SHmap4 = ["noun", "postposition", "noun", "verb", "verb"];
 var isCorrect = null;
 var isWrong = null;
 
+var correctAnswers = [];
+
 let SEnglish=[SE1,SE2,SE3,SE4,SE5];
 let SHindi=[SH1,SH2,SH3,SH4,SH5];
 
@@ -166,6 +168,7 @@ window.insertRows= function(y,j){
 
 
 window.checkAnswer= function(){
+  correctAnswers=[] ;
   var isWrong = false;
   document.getElementById('getAnswerBtn').innerHTML="";
 //    document.getElementById('getAnswerBtn').value="";
@@ -184,6 +187,7 @@ for (var i in taggedWords) {
     var tag = taggedWord[1];
 
    console.log(word + " /" + tag);
+   correctAnswers[i]= tag;
   var myId=document.getElementById("select"+i).value;
   var str = tag;
   var patt = new RegExp(myId);
@@ -201,7 +205,7 @@ for (var i in taggedWords) {
 }
 
 if(isWrong == true){
-  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn'>Get Answer</button>" ; 
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>" ; 
 }
 
 }
@@ -211,6 +215,8 @@ if(optn=='hindi'){
     var mapValue= document.getElementById('b').value;
     var SHmapValue= eval("SHmap"+mapValue);
     for(var i=0; i<SHmapValue.length; i++){
+      correctAnswers[i]= SHmapValue[i];
+
       var t = SHmapValue[i];
       var z = document.getElementById("select"+i).value;
       if( t == z){
@@ -224,10 +230,67 @@ if(optn=='hindi'){
 
     }
       if(isWrong == true){
-  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn'>Get Answer</button>"  
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>"  
 }
 
     }  
+}
+
+
+window.getAnswers= function(){
+    document.getElementById('getAnswerBtn').innerHTML = "<button id='hideAnsBtn' onclick='hideAnswers()'>Hide Answer</button>"  
+  var correctAnsValue = "";
+  var optn= document.getElementById('selected').value;
+if(optn == 'english'){
+  for(var i=0 ; i< correctAnswers.length; i++){
+ 
+  
+    var patt = new RegExp(correctAnswers[i]);
+    
+    if(patt.test("NN") == true){
+      correctAnsValue = "Noun";
+    }
+     if(patt.test("DT") == true){
+      correctAnsValue = "Determiner";
+    }
+    if(patt.test("VB") == true){
+      correctAnsValue = "Verb";
+    }
+    if(patt.test("IN") == true){
+      correctAnsValue = "Preposition";
+    }
+    if(patt.test("JJ") == true){
+      correctAnsValue = "Adjective";
+    }
+    if(patt.test("RB") == true){
+      correctAnsValue = "Adverb";
+    }
+    if(patt.test("UH") == true){
+      correctAnsValue = "Interjection";
+    }
+    if(patt.test("PRP") == true){
+      correctAnsValue = "Pronoun";
+    }
+    if(patt.test("CC") == true){
+      correctAnsValue = "Conjunction";
+    }
+  document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnsValue;
+    }
+   }
+
+   if(optn == 'hindi'){
+    for(var i=0; i<correctAnswers.length; i++){
+    document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnswers[i];
+  }
+   }
+
+}
+
+window.hideAnswers= function(){
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>"
+  for(var i=0; i<correctAnswers.length; i++){
+    document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= "";
+  }
 }
 
 
