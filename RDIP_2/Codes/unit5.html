@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Virtual Labs</title>
 	<meta encoding="UTF-8" charset="UTF-8">
- 		<script async type="module" src="../Libraries/bundle.js"></script>
+ 	<script src="../Libraries/bundle.js"></script>
 	<link rel="stylesheet" type="text/css" href="unit5.css"> 
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
-<!--		<script type="module" src="unit5.js"></script> -->
-<div class="container">
-	<h2>Experiment</h2><br><br>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body id="body">
+	<div class="container">
+		<h2 class="exp">Experiment</h2><hr><br><br>
 		<select id="selected" onchange="chooseLang()">
 			<option value="null">---Select language---</option>
 			<option value="english">English</option>
 			<option value="hindi">Hindi</option>
-		</select>
+		</select><br><br>
 		<p id="senDropbox"></p>
 		<p id="displayTxt"></p>
-		<table id="myTable">
-			
-		</table>
+		<table id="myTable"></table><br><br>
 		<div id="bundleAnswers"></div>
-		<p id='submitBtn'></p>
-		<div id="getAnswerBtn"></div>
-
-
-</div>
+		<p id='submitBtn'></p><br>
+		<div id="getAnswerBtn"></div><br>
+	</div><br><br>
 </body>
 </html>

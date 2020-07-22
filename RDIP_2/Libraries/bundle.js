@@ -1,6 +1,9 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 
 var pos = require('pos');
+
+//DECLARING VARIABLES
+
 let SE1=["The", "child", "liked", "the", "chocolate"],
 SE2=["She", "was", "stopped", "by", "the", "bravest", "knight"],
 SE3=["Mary", "baked", "a", "cake", "for", "his", "birthday"],
@@ -25,38 +28,23 @@ H3=["मेहनत", "का", "फल", "मीठा", "होता", "ह�
 H4=["वाह!", "वह", "खूबसूरत", "है।"],
 H5=["पेड़", "से", "पत्ते", "गिर", "गए।"];
 
-let SHmap0 = ["noun", "postposition", "noun", "postposition", "postposition", "noun", "verb"],
-SHmap1 = ["adjective", "noun", "noun" , "adverb", "verb"],
-SHmap2 = ["noun", "postposition", "noun", "adjective", "verb", "verb"],
-SHmap3 = ["interjection", "pronoun", "adjective", "verb"],
-SHmap4 = ["noun", "postposition", "noun", "verb", "verb"];
+let SEnglish=[SE1,SE2,SE3,SE4,SE5];
+let SHindi=[SH1,SH2,SH3,SH4,SH5];
+
+let SHmap0 = ["Noun", "Postposition", "Noun", "Postposition", "Postposition", "Noun", "Verb"],
+SHmap1 = ["Adjective", "Noun", "Noun" , "Adverb", "Verb"],
+SHmap2 = ["Noun", "Postposition", "Noun", "Adjective", "Verb", "Verb"],
+SHmap3 = ["Interjection", "Pronoun", "Adjective", "Verb"],
+SHmap4 = ["Noun", "Postposition", "Noun", "Verb", "Verb"];
 
 var isCorrect = null;
 var isWrong = null;
 
 var correctAnswers = [];
 
-let SEnglish=[SE1,SE2,SE3,SE4,SE5];
-let SHindi=[SH1,SH2,SH3,SH4,SH5];
+//CHOOSE LANGUAGE FROM THE DROPDOWN BOX
 
-window.selectDrop= function(f){
-  document.getElementById('getAnswerBtn').innerHTML="";
-var optn= document.getElementById('selected').value;
-  if(optn=='english'){
-var engList='<select id="select'+f+'" ><option value="NN">Noun</option><option value="PRP">Pronoun</option><option value="CC">Conjunction</option><option value="UH">Interjection</option><option value="VB">Verb</option><option value="DT">Determiner</option><option value="JJ">Adjective</option><option value="RB">Adverb</option><option value="IN">Preposition</option></select>'
-
-return engList;
-}
-if(optn=='hindi'){
-var hinList='<select id="select'+f+'"><option value="noun">Noun</option><option value="pronoun">Pronoun</option><option value="conjunction">Conjunction</option><option value="interjection">Interjection</option><option value="verb">Verb</option><option value="determiner">Determiner</option><option value="adjective">Adjective</option><option value="adverb">Adverb</option><option value="postposition">Postposition</option></select>'
-return hinList;
-
-}
-
-}
- 
-
-window.chooseLang=function(){
+ window.chooseLang=function(){
   document.getElementById('submitBtn').innerHTML="";
   document.getElementById("myTable").innerHTML="";
   document.getElementById('displayTxt').innerHTML=""; 
@@ -67,26 +55,23 @@ window.chooseLang=function(){
   } 
   if(optn=='hindi'){
     document.getElementById('senDropbox').innerHTML="<select id='b' onchange='createTable()'><option value='null'>"+ "---Select a sentence---" +"</option>"+"<option value='0' id='SH1'>"+ H1.join(" ") +"</option>"+"</option>"+"<option value='1' id='SH2'>"+ H2.join(" ") +"</option>"+"<option value='2' id='SH3'>"+ H3.join(" ") +"</option>"+"<option value='3' id='SH4'> "+ H4.join(" ") +"</option>"+"<option value='4' id='SH5'>"+ H5.join(" ") +"</option></select>"
-
   }
 
   if(optn=='---Select language---'){
-
     document.getElementById('senDropbox').innerHTML=""; 
   }
-  
 }
 
+//CREATE DYNAMIC TABLE
 
 window.createTable= function(){
-    document.getElementById('getAnswerBtn').innerHTML="";
-    document.getElementById("myTable").innerHTML="";
-    document.getElementById('displayTxt').innerHTML="Select the POS tag for corresponding words"
+  document.getElementById('getAnswerBtn').innerHTML="";
+  document.getElementById("myTable").innerHTML="";
+  document.getElementById('displayTxt').innerHTML="Select the POS tag for corresponding words"
   var x = document.createElement("TABLE");
     x.setAttribute("id", "myTable");
     document.body.appendChild(x);
 
-  
     var y = document.createElement("TR");
     y.setAttribute("id", "myTr");
     document.getElementById("myTable").appendChild(y);
@@ -138,7 +123,6 @@ window.createTable= function(){
       
   for(var i=selectedValue.length-1; i>=0; i--){
 
-//    var h =selectedValue.length-i;
     insertRows(selectedValue[i],i);
   }
 
@@ -165,7 +149,22 @@ window.insertRows= function(y,j){
   }
 }
 
+//TABLE DROPDOWN BOX
 
+window.selectDrop= function(f){
+  document.getElementById('getAnswerBtn').innerHTML="";
+  var optn= document.getElementById('selected').value;
+    if(optn=='english'){
+      var engList='<select class="innerDropdown" id="select'+f+'"><option value="NN">Noun</option><option value="PRP">Pronoun</option><option value="CC">Conjunction</option><option value="UH">Interjection</option><option value="VB">Verb</option><option value="DT">Determiner</option><option value="JJ">Adjective</option><option value="RB">Adverb</option><option value="IN">Preposition</option></select>'
+      return engList;
+    }
+    if(optn=='hindi'){
+      var hinList='<select class="innerDropdown" id="select'+f+'"><option value="Noun">Noun</option><option value="Pronoun">Pronoun</option><option value="Conjunction">Conjunction</option><option value="Interjection">Interjection</option><option value="Verb">Verb</option><option value="Determiner">Determiner</option><option value="Adjective">Adjective</option><option value="Adverb">Adverb</option><option value="Postposition">Postposition</option></select>'
+      return hinList;
+    }
+}
+
+//CHECKING AND COMPARING ANSWERS
 
 window.checkAnswer= function(){
   correctAnswers=[] ;
@@ -173,42 +172,36 @@ window.checkAnswer= function(){
   document.getElementById('getAnswerBtn').innerHTML="";
 //    document.getElementById('getAnswerBtn').value="";
 
-    var optn= document.getElementById('selected').value;
-   if(optn=='english'){
+  var optn= document.getElementById('selected').value;
+    if(optn=='english'){
+      var selectedValue= SEnglish[document.getElementById('b').value];
+      var words = new pos.Lexer().lex(selectedValue.join(" ")); 
+      var tagger = new pos.Tagger();
+      var taggedWords = tagger.tag(words);
+      for (var i in taggedWords) {
+        var taggedWord = taggedWords[i];
+        var word = taggedWord[0];
+        var tag = taggedWord[1];
+console.log(word + " /" + tag);
+        correctAnswers[i]= tag;
+        var myId=document.getElementById("select"+i).value;
+        var str = tag;
+        var patt = new RegExp(myId);
+        var res = patt.test(str);
+        i=Number(i);
+        if(res == true){
+          isCorrect=true;
+          document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true' style='color: green'></i>";
+        } else{
+          isWrong = true;
+          document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true' style='color: red'></i>";
+        }
+      }
 
-    var selectedValue= SEnglish[document.getElementById('b').value];
-
-var words = new pos.Lexer().lex(selectedValue.join(" ")); //You have to enter the sentences here
-var tagger = new pos.Tagger();
-var taggedWords = tagger.tag(words);
-for (var i in taggedWords) {
-    var taggedWord = taggedWords[i];
-    var word = taggedWord[0];
-    var tag = taggedWord[1];
-
-   console.log(word + " /" + tag);
-   correctAnswers[i]= tag;
-  var myId=document.getElementById("select"+i).value;
-  var str = tag;
-  var patt = new RegExp(myId);
-  var res = patt.test(str);
- 
-  i=Number(i);
-   if(res == true){
-    isCorrect=true;
-    document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
-
-    } else{
-      isWrong = true;
-      document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
+      if(isWrong == true){
+      document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>" ; 
     }
-}
-
-if(isWrong == true){
-  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>" ; 
-}
-
-}
+  }
 
 if(optn=='hindi'){
 
@@ -216,75 +209,73 @@ if(optn=='hindi'){
     var SHmapValue= eval("SHmap"+mapValue);
     for(var i=0; i<SHmapValue.length; i++){
       correctAnswers[i]= SHmapValue[i];
-
       var t = SHmapValue[i];
       var z = document.getElementById("select"+i).value;
       if( t == z){
         isCorrect=true;
-            document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true'></i>";
+            document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-check' aria-hidden='true' style='color: green'></i>";
 
       }else{
         isWrong = true;
-      document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true'></i>";
+      document.getElementById("myTable").rows[i+1].cells.item(2).innerHTML="<i class='fa fa-times' aria-hidden='true' style='color: red'></i>";
     }
 
     }
       if(isWrong == true){
-  document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>"  
-}
-
+        document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>"  
+      }
     }  
 }
 
+// DISPLAY CORRECT ANSWERS
 
 window.getAnswers= function(){
-    document.getElementById('getAnswerBtn').innerHTML = "<button id='hideAnsBtn' onclick='hideAnswers()'>Hide Answer</button>"  
+  document.getElementById('getAnswerBtn').innerHTML = "<button id='hideAnsBtn' onclick='hideAnswers()'>Hide Answer</button>"  
   var correctAnsValue = "";
   var optn= document.getElementById('selected').value;
-if(optn == 'english'){
-  for(var i=0 ; i< correctAnswers.length; i++){
- 
-  
-    var patt = new RegExp(correctAnswers[i]);
+  if(optn == 'english'){
+    for(var i=0 ; i< correctAnswers.length; i++){
+      var patt = new RegExp(correctAnswers[i]);
     
-    if(patt.test("NN") == true){
-      correctAnsValue = "Noun";
+      if(patt.test("NN") == true || patt.test("NNP") == true || patt.test("NNS") == true){
+        correctAnsValue = "Noun";
+      }
+      if(patt.test("DT") == true){
+        correctAnsValue = "Determiner";
+      }
+      if(patt.test("VB") == true || patt.test("VBD") == true || patt.test("VBN") == true){
+        correctAnsValue = "Verb";
+      }
+      if(patt.test("IN") == true){
+        correctAnsValue = "Preposition";
+      }
+      if(patt.test("JJ") == true || patt.test("JJS") == true){
+        correctAnsValue = "Adjective";
+      }
+      if(patt.test("RB") == true){
+        correctAnsValue = "Adverb";
+      }
+      if(patt.test("UH") == true){
+        correctAnsValue = "Interjection";
+      }
+      if(patt.test("PRP") == true){
+        correctAnsValue = "Pronoun";
+      }
+      if(patt.test("CC") == true){
+        correctAnsValue = "Conjunction";
+      }
+      document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnsValue
     }
-     if(patt.test("DT") == true){
-      correctAnsValue = "Determiner";
-    }
-    if(patt.test("VB") == true){
-      correctAnsValue = "Verb";
-    }
-    if(patt.test("IN") == true){
-      correctAnsValue = "Preposition";
-    }
-    if(patt.test("JJ") == true){
-      correctAnsValue = "Adjective";
-    }
-    if(patt.test("RB") == true){
-      correctAnsValue = "Adverb";
-    }
-    if(patt.test("UH") == true){
-      correctAnsValue = "Interjection";
-    }
-    if(patt.test("PRP") == true){
-      correctAnsValue = "Pronoun";
-    }
-    if(patt.test("CC") == true){
-      correctAnsValue = "Conjunction";
-    }
-  document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnsValue;
-    }
-   }
-
-   if(optn == 'hindi'){
-    for(var i=0; i<correctAnswers.length; i++){
-    document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnswers[i];
   }
-   }
 
+  if(optn == 'hindi'){
+    for(var i=0; i<correctAnswers.length; i++){
+      document.getElementById("myTable").rows[i+1].cells.item(3).innerHTML= correctAnswers[i];
+    }
+  }
 }
+
+//HIDE ANSWERS
 
 window.hideAnswers= function(){
   document.getElementById('getAnswerBtn').innerHTML = "<button id='showAnsBtn' onclick='getAnswers()'>Get Answer</button>"

@@ -3,11 +3,74 @@
 	align-content: center;
 	margin-right: 100px;
 	margin-left: 100px;
+	background-color: white	;
 }
 
 table,tr,td,th{
-	margin-left:560px;
 	border: 1px solid black;
 	border-collapse: collapse; 
 	padding: 5px;
+}
+
+#myTable{
+	margin-left: auto;
+  margin-right: auto;
+  width:600px;
+}
+
+td{
+	width:100px;
+}
+
+option{
+	text-align: center;
+}
+
+button{
+	background-color: green;
+  	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 20px;
+  	margin: 4px 2px;
+  	cursor: pointer;
+  	width:200px;
+  	border-radius: 15px;
+}
+
+hr { 
+  	display: block;
+  	margin-top: 0.5em;
+  	margin-bottom: 0.5em;
+  	margin-left: auto;
+  	margin-right: auto;
+  	border-style: inset;
+  	border-width: 1px;
+} 
+
+#selected, #b{
+	width:400px;
+	text-align: center;
+	padding:5px;
+	font-size: 20px;
+	border-radius: 6px;
+	box-shadow: 5px 5px 5px #888888
+}
+
+.exp{
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
+#body{
+	background-color: black;
+}
+
+.innerDropdown{
+	width:200px;
+		border-radius: 6px;
+
 }
